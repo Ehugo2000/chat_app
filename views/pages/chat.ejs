@@ -19,7 +19,10 @@
       <p> No message </p>
       <% }else{ %> 
         <% for(let message of messages){ %>  
-          <%- include('../partials/message.ejs', {message})%>   
+        <p class="message-container"> <%= message.message  %> from <%= message.username %> </p>
+
+
+          
           
     <% }} %> 
 

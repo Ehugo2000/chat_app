@@ -7,10 +7,11 @@ function createMessage(username, message){
     date: Date.now()
   }
   messages.unshift(newMessage)
+
 }
 
 function getMessages(){
   return messages.slice(0,10)
 }
 
-module.exports = {createMessage, getMessages}
+module.exports = {createMessage, getMessages, messages}
