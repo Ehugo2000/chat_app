@@ -8,6 +8,7 @@
   <title>views-pages-chat.ejs</title>
 </head>
 <body>
+  <script src="/scripts/polling.js"></script>
   <h3>Logged in as: <%= userName %></h3> 
   <form action="/messages" method="POST">
     <input type="text" required name="newmessage">
@@ -21,6 +22,6 @@
         <p> <%= message.message  %> from <%= message.username %> </p>  
     <% }} %> 
   </div>
-
 </body>
+
 </html>

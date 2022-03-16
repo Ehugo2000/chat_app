@@ -26,8 +26,12 @@ app.post('/setname', (req, res) => {
 })
 
 app.get('/pages/chat', (req, res) => {
-  const userName = req.headers.cookie.split('=')[1]
-  res.render('pages/chat', {userName: userName, messages: Chat.getMessages()})
+  if(!req.headers.cookie){
+    res.redirect('/')
+  }else{
+    const userName = req.headers.cookie.split('=')[1]
+    res.render('pages/chat', {userName, messages: Chat.getMessages()})
+  }
 })
 
 // create messages and redirect to chat with message Array
