@@ -3,13 +3,13 @@ const app = express();
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.listen(8000);
+const Chat = require('./chat')
 
 
 // get style.css as default-----
 app.use(express.static('public'))
 
 //global variabel--
-let messages = []
 
 
 //landing page-----
@@ -27,12 +27,13 @@ app.post('/setname', (req, res) => {
 
 app.get('/pages/chat', (req, res) => {
   const userName = req.headers.cookie.split('=')[1]
-  res.render('pages/chat', {cookie: userName})
+  res.render('pages/chat', {userName: userName, messages: Chat.getMessages()})
 })
 
 // create messages and redirect to chat with message Array
 app.post('/messages', (req, res) =>{
+  const userName = req.headers.cookie.split('=')[1]
   const message = req.body.newmessage
-  console.log(message);
+  Chat.createMessage(userName, message)
   res.redirect('pages/chat')
 })
