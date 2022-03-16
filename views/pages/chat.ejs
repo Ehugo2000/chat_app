@@ -8,10 +8,19 @@
   <title>views-pages-chat.ejs</title>
 </head>
 <body>
-  <h3>Logged in as: <%= cookie %></h3> 
+  <h3>Logged in as: <%= userName %></h3> 
   <form action="/messages" method="POST">
-    <input type="text" name="newmessage">
+    <input type="text" required name="newmessage">
     <button>Create new message</button>
   </form>
+  <div>
+     <% if(!messages){%> 
+      <p> No message </p>
+      <% }else{ %> 
+        <% for(let message of messages){ %> 
+        <p> <%= message.message  %> from <%= message.username %> </p>  
+    <% }} %> 
+  </div>
+
 </body>
 </html>
