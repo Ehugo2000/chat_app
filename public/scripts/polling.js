@@ -1,6 +1,4 @@
 
-
-
     setInterval( () => {
         fetch('/pages/chat')
           .then(res => res.text())

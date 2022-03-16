@@ -18,10 +18,14 @@
      <% if(!messages){%> 
       <p> No message </p>
       <% }else{ %> 
-        <% for(let message of messages){ %>   
+        <% for(let message of messages){ %>  
+          <%- include('../partials/message.ejs', {message})%>   
+          
     <% }} %> 
+
+    
   </div>
-  <%- include('../partials/message.ejs', {message})%>
+ 
 </body>
 
 </html>
